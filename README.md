@@ -1,19 +1,9 @@
 # SMSAPI PHP Client
 
-[![Build Status](https://travis-ci.org/smsapi/smsapi-php-client.svg?branch=master)](https://travis-ci.org/smsapi/smsapi-php-client)
-[![Packagist - latest version](https://img.shields.io/packagist/v/smsapi/php-client.svg)](https://packagist.org/packages/smsapi/php-client)
-[![Packagist - downloads](https://img.shields.io/packagist/dt/smsapi/php-client.svg)](https://packagist.org/packages/smsapi/php-client)
-[![Packagist - license](https://img.shields.io/packagist/l/smsapi/php-client.svg)](https://packagist.org/packages/smsapi/php-client)
-
-**[Version 1.8.7 available here](https://github.com/smsapi/smsapi-php-client/tree/v1.8.7)**
-
-**[SMSAPI.COM API documentation](https://www.smsapi.com/docs)**
-
-**[SMSAPI.PL API documentation](https://www.smsapi.pl/docs)**
-
 ## Requirements
 
 * [composer](https://getcomposer.org/)
+* PHP >= 8.0.0
 
 ## Install package with dependencies
 
@@ -44,7 +34,7 @@ declare(strict_types=1);
 
 use Smsapi\Client\Curl\SmsapiHttpClient;
 
-require_once 'vendor/autoload.php';
+require_once "vendor/autoload.php";
 
 $client = new SmsapiHttpClient();
 ```
@@ -62,14 +52,14 @@ use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use Smsapi\Client\SmsapiHttpClient;
 
-require_once 'vendor/autoload.php';
+require_once "vendor/autoload.php";
 
 /**
  * @var ClientInterface $httpClient
  * @var RequestFactoryInterface $requestFactory
  * @var StreamFactoryInterface $streamFactory
  */
-require_once 'your-own-psr18-stuff.php';
+require_once "your-own-psr18-stuff.php";
 
 $client = new SmsapiHttpClient($httpClient, $requestFactory, $streamFactory);
 ```
@@ -85,14 +75,14 @@ declare(strict_types=1);
 
 use Smsapi\Client\SmsapiClient;
 
-require_once 'vendor/autoload.php';
+require_once "vendor/autoload.php";
 
 /**
  * @var SmsapiClient $client
  */
-require_once 'client.php';
+require_once "client.php";
 
-$apiToken = '0000000000000000000000000000000000000000';
+$apiToken = "0000000000000000000000000000000000000000";
 
 $service = $client->smsapiComService($apiToken);
 ```
@@ -106,14 +96,14 @@ declare(strict_types=1);
 
 use Smsapi\Client\SmsapiClient;
 
-require_once 'vendor/autoload.php';
+require_once "vendor/autoload.php";
 
 /**
  * @var SmsapiClient $client
  */
-require_once 'client.php';
+require_once "client.php";
 
-$apiToken = '0000000000000000000000000000000000000000';
+$apiToken = "0000000000000000000000000000000000000000";
 
 $service = $client->smsapiPlService($apiToken);
 ``` 
@@ -127,15 +117,15 @@ declare(strict_types=1);
 
 use Smsapi\Client\SmsapiClient;
 
-require_once 'vendor/autoload.php';
+require_once "vendor/autoload.php";
 
 /**
  * @var SmsapiClient $client
  */
-require_once 'client.php';
+require_once "client.php";
 
-$apiToken = '0000000000000000000000000000000000000000';
-$uri = 'http://example.com';
+$apiToken = "0000000000000000000000000000000000000000";
+$uri = "http://example.com";
 
 $service = $client->smsapiComServiceWithUri($apiToken, $uri);
 ```
@@ -154,15 +144,15 @@ declare(strict_types=1);
 use Smsapi\Client\Service\SmsapiComService;
 
 /** @var SmsapiComService $service */
-require_once 'service.php';
+require_once "service.php";
 
 $result = $service->pingFeature()
     ->ping();
 
 if ($result->authorized) {
-    echo 'Authorized';
+    echo "Authorized";
 } else {
-    echo 'Not authorized';
+    echo "Not authorized";
 }
 ```
 
@@ -177,9 +167,9 @@ use Smsapi\Client\Service\SmsapiComService;
 use Smsapi\Client\Feature\Sms\Bag\SendSmsBag;
 
 /** @var SmsapiComService $service */
-require_once 'service.php';
+require_once "service.php";
 
-$sms = SendSmsBag::withMessage('someone phone number', 'some message');
+$sms = SendSmsBag::withMessage("someone phone number", "some message");
 
 $service->smsFeature()
     ->sendSms($sms);
@@ -196,10 +186,10 @@ use Smsapi\Client\Service\SmsapiComService;
 use Smsapi\Client\Feature\Sms\Bag\SendSmsBag;
 
 /** @var SmsapiComService $service */
-require_once 'service.php';
+require_once "service.php";
 
-$sms = SendSmsBag::withMessage('someone phone number', 'some message');
-$sms->from = 'Test';
+$sms = SendSmsBag::withMessage("someone phone number", "some message");
+$sms->from = "Test";
 
 $service->smsFeature()
     ->sendSms($sms);
@@ -210,10 +200,10 @@ For more usage examples take a look at client test suite.
 ### How to use optional request parameters?
 
 Request parameters are represented in a form of data transfer object.
-DTOs can be found by searching for 'bag' postfixed classes.
+DTOs can be found by searching for "bag" postfixed classes.
 Each bag may contain required and optional parameters.
 Required parameters are that class public properties, usually accessible via some form of a setter or named constructor.
-Optional parameters are described by docblock's '@property' annotation.
+Optional parameters are described by docblock"s "@property" annotation.
 
 Each parameter can be also set directly by setting bag property, as in example:
 
@@ -224,8 +214,8 @@ declare(strict_types=1);
 
 use Smsapi\Client\Feature\Sms\Bag\SendSmsBag;
 
-$sms = SendSmsBag::withMessage('someone phone number', 'some message');
-$sms->encoding = 'utf-8';
+$sms = SendSmsBag::withMessage("someone phone number", "some message");
+$sms->encoding = "utf-8";
 
 ```
 
@@ -248,12 +238,12 @@ use Psr\Log\LoggerInterface;
 use Psr\Log\LoggerTrait;
 use Smsapi\Client\SmsapiClient;
 
-require_once 'vendor/autoload.php';
+require_once "vendor/autoload.php";
 
 /**
  * @var SmsapiClient $client
  */
-require_once 'client.php';
+require_once "client.php";
 
 $logger = new class() implements LoggerInterface
 {
@@ -261,7 +251,7 @@ $logger = new class() implements LoggerInterface
     
     public function log($level, $message, array $context = [])
     {
-        var_dump($level, $message, $context);
+        \var_dump($level, $message, $context);
     }
 };
 
@@ -271,11 +261,3 @@ $client->setLogger($logger);
 ## Test package
 1. Download package: `composer create-project smsapi/php-client`
 2. Execute tests: `./vendor/bin/phing`
-
-## Docs & Infos
-* [SMSAPI.COM API documentation](https://www.smsapi.com/docs)
-* [SMSAPI.PL API documentation](https://www.smsapi.pl/docs)
-* [Repository on GitHub](https://github.com/smsapi/smsapi-php-client)
-* [Package on Packagist](https://packagist.org/packages/smsapi/php-client)
-* [SMSAPI.COM web page](https://smsapi.com)
-* [SMSAPI.PL web page](https://smsapi.pl)

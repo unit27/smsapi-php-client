@@ -1,7 +1,7 @@
 {
     "name": "smsapi/php-client",
-    "description": "SMSAPI API PHP Client",
-    "homepage": "https://github.com/smsapi/smsapi-php-client",
+    "description": "SMSAPI API PHP (8.0) Client",
+    "homepage": "https://github.com/unit27/smsapi-php-client",
     "type": "library",
     "license": "Apache-2.0",
     "keywords": ["api client", "sms", "mms", "vms", "hlr", "url shortener", "smsapi", "smsapi.pl", "smsapi.com"],
@@ -16,7 +16,7 @@
         }
     },
     "require": {
-        "php": "^7",
+        "php": "^8.0",
         "ext-json": "*",
         "psr/log": "^1",
         "psr/http-message": "^1",
