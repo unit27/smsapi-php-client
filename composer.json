@@ -1,5 +1,5 @@
 {
-    "name": "smsapi/php-client",
+    "name": "unit27/smsapi-php-client",
     "description": "SMSAPI API PHP (8.0) Client",
     "homepage": "https://github.com/unit27/smsapi-php-client",
     "type": "library",
