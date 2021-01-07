@@ -220,6 +220,6 @@ class SmsHttpFeature implements SmsFeature
     {
         return $this->requestExecutorFactory
             ->createLegacyRequestExecutor($this->externalHttpClient)
-            ->request('sms.do', (array)$data);
+            ->request('/sms.do', (array)$data);
     }
 }
